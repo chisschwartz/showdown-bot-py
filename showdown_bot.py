@@ -2,7 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 import time
 
-driver = webdriver.Firefox()
+driver = webdriver.Chrome()
 
 #grab website
 driver.get("https://play.pokemonshowdown.com/")
@@ -24,9 +24,24 @@ text_box_submit.click()
 
 time.sleep(3)
 
-#wait for challenge  to load
+#send challenge
 
-#accept challenge
+find_user_button = driver.find_element(By.NAME, value="finduser")
+find_user_button.click()
+
+find_user_box = driver.find_element(By.NAME, value="data")
+find_user_box.send_keys("ChisBitz")
+
+find_user_submit = driver.find_element(By.CSS_SELECTOR, value="button[type='submit']")
+find_user_submit.click()
+
+find_user_challenge = driver.find_element(By.NAME, value="challenge")
+find_user_challenge.click()
+
+challenge_user = driver.find_element(By.NAME, value="makeChallenge")
+challenge_user.click()
+
+time.sleep(10)
 
 #intiate rng for team and move selection
 
